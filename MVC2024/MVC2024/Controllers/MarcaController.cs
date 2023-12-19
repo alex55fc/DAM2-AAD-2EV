@@ -47,7 +47,7 @@ namespace MVC2024.Controllers
 
 			try
 			{
-				return RedirectToAction(nameof(Index));
+				return RedirectToAction(nameof(Create));
 			}
 			catch
 			{
