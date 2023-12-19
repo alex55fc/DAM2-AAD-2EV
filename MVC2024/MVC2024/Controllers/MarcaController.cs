@@ -18,8 +18,14 @@ namespace MVC2024.Controllers
         // GET: MarcaController
         public ActionResult Index()
 		{
-			return View();
+
+			/*Esta es otra manera de hacerlo solo que en return podnriamos listaMarcas
+			 			List<MarcaModelo> listaMarcas = new List<MarcaModelo>();
+			*/
+			//devolvemos la lista de marcas ya que Marcas es un dbset y por tanto es una lista de objetos de tipo MarcaModelo
+			return View(Contexto.Marcas);
 		}
+	//-------------------------------------------------------------
 
 		// GET: MarcaController/Details/5
 		public ActionResult Details(int id)
@@ -47,7 +53,7 @@ namespace MVC2024.Controllers
 
 			try
 			{
-				return RedirectToAction(nameof(Create));
+				return RedirectToAction(nameof(Index));
 			}
 			catch
 			{
