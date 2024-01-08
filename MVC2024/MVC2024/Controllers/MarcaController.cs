@@ -61,6 +61,12 @@ namespace MVC2024.Controllers
 			}
 		}
 	//-------------------------------------------------------------
+	public ActionResult Desplegable()
+		{
+			return View();
+		}
+		
+	//-------------------------------------------------------------
 		// GET: MarcaController/Edit/5
 		public ActionResult Edit(int id)
 		{

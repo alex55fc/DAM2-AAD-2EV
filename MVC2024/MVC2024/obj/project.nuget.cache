@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2IoYy2rmLwmK8VEB3dTCxJ2gHBl4/TD2ydZ5nUTKcGKj3yASSwXumeBQjcv7Ked9FkXV4my+mdCioeHif3avKA==",
+  "dgSpecHash": "udWZVyk6RpBHLE9E3vfzDekUF0XA9Fk+fwJK+zYfM2t4x0pibpQDhDb3SGEWoAyDqu1BmaEUOVcKOoooq6y6Wg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alexa\\Desktop\\AAD 2ev\\MVC2024\\MVC2024\\MVC2024.csproj",
+  "projectFilePath": "C:\\Users\\alexa\\Desktop\\DAM2-AAD-2EV\\MVC2024\\MVC2024\\MVC2024.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexa\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
