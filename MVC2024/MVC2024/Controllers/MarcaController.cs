@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC2024.Models;
 
 namespace MVC2024.Controllers
@@ -63,6 +64,8 @@ namespace MVC2024.Controllers
 	//-------------------------------------------------------------
 	public ActionResult Desplegable()
 		{
+			//ViewBag es un CONTENEDOR DE DATOS que se puede utilizar para pasar datos entre el controlador y la vista
+			ViewBag.Marcas = new SelectList(Contexto.Marcas, "ID", "NomMarca");
 			return View();
 		}
 		
