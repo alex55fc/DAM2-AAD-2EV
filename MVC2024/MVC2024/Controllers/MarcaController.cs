@@ -66,6 +66,9 @@ namespace MVC2024.Controllers
 		{
 			//ViewBag es un CONTENEDOR DE DATOS que se puede utilizar para pasar datos entre el controlador y la vista
 			ViewBag.Marcas = new SelectList(Contexto.Marcas, "ID", "NomMarca");
+
+			//Este es otro metodo para pasar datos a la vista
+			ViewBag.Marcas2 = Contexto.Marcas;
 			return View();
 		}
 		
