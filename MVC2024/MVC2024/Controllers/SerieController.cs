@@ -20,9 +20,9 @@ namespace MVC2024.Controllers
 		// GET: SerieController
 		public ActionResult Index()
 		{
-			return View();
+			return View(Contexto.Series);
 		}
-
+	//-------------------------------------------------------------
 		// GET: SerieController/Details/5
 		public ActionResult Details(int id)
 		{
@@ -35,12 +35,16 @@ namespace MVC2024.Controllers
 			ViewBag.MarcaId = new SelectList(Contexto.Marcas, "ID", "NomMarca");
 			return View();
 		}
-
+		//-------------------------------------------------------------
 		// POST: SerieController/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(IFormCollection collection)
+		public ActionResult Create(SerieModelo serie)
 		{
+			Contexto.Series.Add(serie);
+			Contexto.Database.EnsureCreated();
+			Contexto.SaveChanges();
+
 			try
 			{
 				return RedirectToAction(nameof(Index));
@@ -50,7 +54,7 @@ namespace MVC2024.Controllers
 				return View();
 			}
 		}
-
+		//-------------------------------------------------------------
 		// GET: SerieController/Edit/5
 		public ActionResult Edit(int id)
 		{
