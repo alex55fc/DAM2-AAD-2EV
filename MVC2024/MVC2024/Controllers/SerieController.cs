@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MVC2024.Models;
 
 namespace MVC2024.Controllers
@@ -20,7 +21,7 @@ namespace MVC2024.Controllers
 		// GET: SerieController
 		public ActionResult Index()
 		{
-			return View(Contexto.Series);
+			return View(Contexto.Series.Include(x => x.Marca).ToList());
 		}
 	//-------------------------------------------------------------
 		// GET: SerieController/Details/5
