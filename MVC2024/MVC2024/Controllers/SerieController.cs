@@ -21,6 +21,9 @@ namespace MVC2024.Controllers
 		// GET: SerieController
 		public ActionResult Index()
 		{
+			/*Otra forma de pasar el Index 
+			List<SerieModelo> lista = Contexto.Series.Include(x => x.Marca).ToList());
+			return (lista); */
 			return View(Contexto.Series.Include(x => x.Marca).ToList());
 		}
 	//-------------------------------------------------------------
