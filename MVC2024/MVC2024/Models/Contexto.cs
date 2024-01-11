@@ -12,6 +12,7 @@ namespace MVC2024.Models
         //el dbset es como un enumerable o una lista de objetos de tipo MarcaModelo
 		public DbSet<MarcaModelo> Marcas { get; set; }
         public DbSet<SerieModelo> Series { get; set; }
+        public DbSet<VehiculoModelo> Vehiculo { get; set;}
 
 	}
 }
