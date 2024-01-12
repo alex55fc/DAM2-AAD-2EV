@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MVC2024.Models;
 
 namespace MVC2024.Controllers
@@ -20,9 +21,11 @@ namespace MVC2024.Controllers
 		// GET: VehiculoController
 		public ActionResult Index()
 		{
-			return View();
+			return View(Contexto.Vehiculo.Include(x => x.Serie).ToList());
+			return View(Contexto.Vehiculo.Include(x => x.Serie.Marca).ToList());
 		}
 
+		//-------------------------------------------------------------
 		// GET: VehiculoController/Details/5
 		public ActionResult Details(int id)
 		{
@@ -47,7 +50,7 @@ namespace MVC2024.Controllers
 
 			try
 			{
-				return RedirectToAction(nameof(Create));
+				return RedirectToAction(nameof(Index));
 			}
 			catch
 			{
