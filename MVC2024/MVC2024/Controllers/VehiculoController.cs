@@ -23,10 +23,16 @@ namespace MVC2024.Controllers
 		{
 			return View(Contexto.Vehiculo.Include(x => x.Serie).Include(x => x.Serie.Marca).ToList());
 		}
+		//--------------------------------------------------------------
+        public ActionResult Busqueda(string busca = "")
+        {
+			var lista = from x in Contexto.Vehiculo.Include(x => x.Serie) where (x.Matricula.Contains(busca)) select x;
+            return View(lista);
+        }
 
-		//-------------------------------------------------------------
-		// GET: VehiculoController/Details/5
-		public ActionResult Details(int id)
+        //-------------------------------------------------------------
+        // GET: VehiculoController/Details/5
+        public ActionResult Details(int id)
 		{
 			return View();
 		}
