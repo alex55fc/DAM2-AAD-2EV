@@ -26,6 +26,9 @@ namespace MVC2024.Controllers
 		//--------------------------------------------------------------
         public ActionResult Busqueda(string busca = "")
         {
+			//objeto para almacenar la busqueda en el formulario 
+			ViewBag.buscar = busca;
+			//
 			var lista = from x in Contexto.Vehiculo.Include(x => x.Serie) where (x.Matricula.Contains(busca)) select x;
             return View(lista);
         }
