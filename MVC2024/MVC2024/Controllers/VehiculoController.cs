@@ -85,10 +85,19 @@ namespace MVC2024.Controllers
 		// POST: VehiculoController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
+		public ActionResult Edit(int id,  VehiculoModelo coche)
 		{
-			try
-			{
+			Contexto.Vehiculo.Update(coche);
+			Contexto.SaveChanges();
+            /*Asi lo hizo agustin
+			VehiculoModelo cocheDatosOld = Contexto.Vehiculo.Find(id)
+			cocheDatosOld.Matricula = coche.Matricula
+			cocheDatosOld.Color = coche.Color
+			cocheDatosOld.SerieId = coche.SerieId
+			Contexto.SaveChanges()
+             */
+            try
+            {
 				return RedirectToAction(nameof(Index));
 			}
 			catch
@@ -96,7 +105,7 @@ namespace MVC2024.Controllers
 				return View();
 			}
 		}
-
+		//-------------------------------------------------------------
 		// GET: VehiculoController/Delete/5
 		public ActionResult Delete(int id)
 		{
