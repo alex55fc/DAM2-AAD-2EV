@@ -109,14 +109,16 @@ namespace MVC2024.Controllers
 		// GET: VehiculoController/Delete/5
 		public ActionResult Delete(int id)
 		{
-			return View();
-		}
+            return View(Contexto.Vehiculo.Include("Serie.Marca").FirstOrDefault(x => x.Id == id));
+        }
 
-		// POST: VehiculoController/Delete/5
-		[HttpPost]
+        // POST: VehiculoController/Delete/5
+        [HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int id, IFormCollection collection)
 		{
+			Contexto.Vehiculo.Remove(Contexto.Vehiculo.Find(id));	
+			Contexto.SaveChanges();
 			try
 			{
 				return RedirectToAction(nameof(Index));
