@@ -28,7 +28,8 @@ namespace MVC2024.Controllers
 		}
         //-------------------------------------------------------------
         // GET: MarcaController
-        public ActionResult ListadoDeMarcas()
+		//el action result es el tipo de dato que devuelve el metodo llamarlo igual que su vista 
+        public ActionResult Listado()
         {
 
 			 return View(Contexto.Marcas);
