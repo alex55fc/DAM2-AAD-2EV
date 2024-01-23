@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MVC2024.Models.MarcaModelo>
+
+@{
+    ViewData["Title"] = "Listado de Marcas";
+}
+
+<h1>Listado de Marcas</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomMarca)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <!-- aqui se puede poner un enlace a la vista de listado de series de la marca -->
+                <!--este asp-action="ListadoDeMarcas" es el nombre del metodo en el controlador que 
+                llamaremos para mostrar el listado de series de la marca-->
+                <a asp-action="ListadoDeMarcas" asp-controller="Serie" asp-route-id="@item.ID">@item.NomMarca</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

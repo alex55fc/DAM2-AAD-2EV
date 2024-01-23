@@ -26,10 +26,17 @@ namespace MVC2024.Controllers
 			//devolvemos la lista de marcas ya que Marcas es un dbset y por tanto es una lista de objetos de tipo MarcaModelo
 			return View(Contexto.Marcas);
 		}
-	//-------------------------------------------------------------
+        //-------------------------------------------------------------
+        // GET: MarcaController
+        public ActionResult ListadoDeMarcas()
+        {
 
-		// GET: MarcaController/Details/5
-		public ActionResult Details(int id)
+			 return View(Contexto.Marcas);
+        }
+        //-------------------------------------------------------------
+
+        // GET: MarcaController/Details/5
+        public ActionResult Details(int id)
 		{
 			return View();
 		}
