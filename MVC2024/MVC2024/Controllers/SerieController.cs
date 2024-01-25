@@ -26,9 +26,15 @@ namespace MVC2024.Controllers
 			return (lista); */
 			return View(Contexto.Series.Include(x => x.Marca).ToList());
 		}
-	//-------------------------------------------------------------
-		// GET: SerieController/Details/5
-		public ActionResult Details(int id)
+        //-------------------------------------------------------------
+		//este metodo recibe el id de la marca y devuelve la lista de series de esa marca
+        public ActionResult Listado(int id)
+        {
+			return View(Contexto.Marcas.Include("Series").FirstOrDefault(marca => marca.ID == id));
+        }
+        //-------------------------------------------------------------
+        // GET: SerieController/Details/5
+        public ActionResult Details(int id)
 		{
 			return View();
 		}

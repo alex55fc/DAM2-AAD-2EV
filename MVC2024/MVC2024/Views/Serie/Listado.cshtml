@@ -1,0 +1,31 @@
+﻿@model MVC2024.Models.MarcaModelo
+
+@{
+    ViewData["Title"] = "Listado";
+}
+
+<h1 align="center">@Model.NomMarca</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Modelos")
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+<!--aqui se muestra el listado de series de la marca-->
+@foreach (SerieModelo item in Model.Series) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomSerie)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
