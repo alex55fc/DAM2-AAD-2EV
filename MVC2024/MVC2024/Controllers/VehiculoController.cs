@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using MVC2024.Models;
 
@@ -128,5 +129,13 @@ namespace MVC2024.Controllers
 				return View();
 			}
 		}
-	}
+		//--------------------------------------------------------------
+		//ejercicio del listado de los Vehiculos
+		public ActionResult Ejercicio(int marcaId = 1, int serieId= 0)
+		{
+            ViewBag.lasMarcas = new SelectList(Contexto.Marcas, "ID", "NomMarca", marcaId);
+			ViewBag.lasSeries = new SelectList(Contexto.Series.Where(x => x.MarcaId == marcaId), "ID", "NomSerie", serieId);
+            return View(Contexto.Vehiculo.ToList().Where(v => v.serieId == serieId).ToList());
+        }
+    }
 }
