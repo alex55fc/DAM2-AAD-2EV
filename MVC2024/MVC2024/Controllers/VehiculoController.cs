@@ -9,8 +9,22 @@ namespace MVC2024.Controllers
 {
 	public class VehiculoController : Controller
 	{
-		//-------------------------------------------------------------
-		public Contexto Contexto { get; }
+        //-------------------------------------------------------------
+		//ejercicio.Crear una clase para almacenar los datos de los vehiculos de la consulta de SQL Management
+		public class VehiculoTotal
+		{
+            public string NomMarca { get; set; }
+            public string NomSerie { get; set; }
+            public string  Matricula { get; set; }
+            public string Color { get; set; }
+        }
+		public ActionResult Listado2()
+		{
+			//hacemos una consulta a la base de datos para obtener los datos de los vehiculos de la vista creada en SQL Management
+			return View(Contexto.vistaTotal.ToList());
+		}
+        //-------------------------------------------------------------
+        public Contexto Contexto { get; }
 
 		//añadimos metodo constructor para inyectar el contexto
 		public VehiculoController(Contexto contexto)
