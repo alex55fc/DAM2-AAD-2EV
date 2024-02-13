@@ -19,9 +19,11 @@ namespace MVC2024.Controllers
             public string Color { get; set; }
         }
 		public ActionResult Listado2()
-		{
-			//hacemos una consulta a la base de datos para obtener los datos de los vehiculos de la vista creada en SQL Management
-			return View(Contexto.vistaTotal.ToList());
+		{	
+			var lista = Contexto.vistaTotal.FromSql($"SELECT Marca.NomMarca, Serie.NomSerie, Vehiculo.Matricula, Vehiculo.Color FROM Marca INNER JOIN Serie ON Marca.ID = Serie.MarcaId INNER JOIN Vehiculo ON Serie.ID = Vehiculo.SerieId");
+			/*hacemos una consulta a la base de datos para obtener los datos de los vehiculos de la vista creada en SQL Management
+			return View(Contexto.vistaTotal.ToList());*/
+			return View(lista);
 		}
         //-------------------------------------------------------------
         public Contexto Contexto { get; }
