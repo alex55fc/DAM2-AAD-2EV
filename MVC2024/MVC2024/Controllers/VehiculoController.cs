@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using MVC2024.Models;
 
 namespace MVC2024.Controllers
@@ -31,7 +33,20 @@ namespace MVC2024.Controllers
 			//esto es para llamar a un procedimiento almacenado
             return View(Contexto.vistaTotal.FromSql($"EXECUTE getseriesVehiculos"));
         }
-        //-------------------------------------------------------------
+        //------------------------------------------------------------
+        public ActionResult ListWithProcedureAndParameter(string color = "%")
+        {
+
+			var elColor = new SqlParameter("@ColorSel", color);
+
+            //este viewbag es para mostrar el color del vehiculo en el formulario
+            /* Esta es la forma de hacerlo de Agustin
+			 * ViewBag.color = new SelectList(Contexto.Vehiculo.Select(x => x.Color).Distinct(), "Color", "Color");*/
+            ViewBag.color = new SelectList(Contexto.Vehiculo.Select(x => x.Color).Distinct().ToList());
+
+            //el parametro es el color del vehiculo, el % es para que muestre todos los colores
+            return View(Contexto.vistaTotal.FromSql($"EXECUTE getVehiculosPorColor {elColor}"));
+        }        //-------------------------------------------------------------
         public Contexto Contexto { get; }
 
 		//añadimos metodo constructor para inyectar el contexto
