@@ -1,4 +1,5 @@
-﻿using NuGet.Protocol.Core.Types;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using NuGet.Protocol.Core.Types;
 
 namespace MVC2024.Models
 {
@@ -10,6 +11,11 @@ namespace MVC2024.Models
 
 		public SerieModelo Serie { get; set; }
 		public int serieId { get; set; }
+
+		//Para el ejercicio de tabla M:M
+		[NotMapped]
+		public List<int> ExtrasSelecionados { get; set; }
+		public List<VehiculoExtraModelo> VehiculoExtras { get; set; }
 
 	}
 }

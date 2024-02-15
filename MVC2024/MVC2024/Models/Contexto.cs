@@ -22,5 +22,9 @@ namespace MVC2024.Models
             modelBuilder.Entity<VehiculoTotal>().HasNoKey();
         }
         public DbSet<VehiculoTotal> vistaTotal { get; set; }
+        
+        //---------------------------------------------------------------
+        public DbSet<ExtraModelo> Extras { get; set; }
+        public DbSet<VehiculoExtraModelo> VehiculoExtraModelos { get; set; }
 	}
 }
