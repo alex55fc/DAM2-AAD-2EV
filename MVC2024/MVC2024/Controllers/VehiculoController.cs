@@ -59,8 +59,18 @@ namespace MVC2024.Controllers
 		// GET: VehiculoController
 		public ActionResult Index()
 		{
-			return View(Contexto.Vehiculo.Include(x => x.Serie).Include(x => x.Serie.Marca).ToList());
-		}
+           /* ASI lo hace agustin 
+		   var vehiculos = Contexto.Vehiculo
+            .Include(v => v.Serie)
+            .Include(v => v.Serie.Marca)
+            .Include(v => v.VehiculoExtras)
+            .ThenInclude(ve => ve.Extra)
+            .ToList();
+            return View(vehiculos);*/
+		   
+            return View(Contexto.Vehiculo.Include(x => x.Serie).Include(x => x.Serie.Marca)
+				.Include(x => x.VehiculoExtras).ThenInclude(xy =>xy.Extra).ToList());
+        }
 		//--------------------------------------------------------------
         public ActionResult Busqueda(string busca = "")
         {
@@ -90,6 +100,8 @@ namespace MVC2024.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.SerieId = new SelectList(Contexto.Series, "ID", "NomSerie");
+			//hacemos un viewbag para mostrar los extras en el formulario
+			ViewBag.ExtrasDeVehiculos = new MultiSelectList(Contexto.Extras, "Id", "NomExtra");
 			return View();
 		}
 		//-------------------------------------------------------------
@@ -102,7 +114,18 @@ namespace MVC2024.Controllers
 			Contexto.Database.EnsureCreated();
 			Contexto.SaveChanges();
 
-			try
+            foreach (var extraID in vehiculo.ExtrasSelecionados)
+            {
+                var obj = new VehiculoExtraModelo()
+                {
+                    ExtraId = extraID,
+                    VehiculoId = vehiculo.Id
+                };
+                Contexto.VehiculoExtraModelos.Add(obj);
+            }
+            Contexto.SaveChanges();
+
+            try
 			{
 				return RedirectToAction(nameof(Index));
 			}
