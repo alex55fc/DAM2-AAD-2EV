@@ -139,7 +139,12 @@ namespace MVC2024.Controllers
 		public ActionResult Edit(int id)
 		{
 			ViewBag.SerieId = new SelectList(Contexto.Series, "ID", "NomSerie");
-			return View(Contexto.Vehiculo.Find(id));
+			VehiculoModelo vehiculo = Contexto.Vehiculo.Find(id);
+            //ejercicio de tabla M:M
+			vehiculo.ExtrasSelecionados = Contexto.VehiculoExtraModelos.Where(x => x.VehiculoId == id).Select(x => x.ExtraId).ToList();
+		
+            ViewBag.ExtraList = new MultiSelectList(Contexto.Extras, "Id", "NomExtra", vehiculo.ExtrasSelecionados);
+			return View(vehiculo);
 		}
 		//-------------------------------------------------------------
 
@@ -157,6 +162,28 @@ namespace MVC2024.Controllers
 			cocheDatosOld.SerieId = coche.SerieId
 			Contexto.SaveChanges()
              */
+
+			//ejercicio de tabla M:M
+            var extrasActuales= Contexto.VehiculoExtraModelos.Where(x => x.VehiculoId == id);
+			//Hacemos este bucle para borrar los extras actuales
+			foreach (var x in extrasActuales)
+			{
+				Contexto.VehiculoExtraModelos.Remove(x);
+			}
+			
+			//esto es para añadir los extras al coche, creamos un objeto de tipo VehiculoExtraModelo(tabla intermedia)
+			foreach ( var extraAñadir in coche.ExtrasSelecionados)
+			{
+				//esto es para añadir los extras al coche
+				var objVehiculoExtra = new VehiculoExtraModelo()
+				{
+                    ExtraId = extraAñadir,
+                    VehiculoId = coche.Id
+                };
+				Contexto.VehiculoExtraModelos.Add(objVehiculoExtra);
+			}
+			Contexto.SaveChanges();
+
             try
             {
 				return RedirectToAction(nameof(Index));
