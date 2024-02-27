@@ -12,18 +12,19 @@
 <table class="table">
     <thead>
         <tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Serie.Marca)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Serie)
+			</th>
             <th>
                 @Html.DisplayNameFor(model => model.Matricula)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Color)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Serie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Serie.Marca)
-            </th>
+
             <th>
 				@Html.DisplayNameFor(model => model.VehiculoExtras)
            </th>
@@ -33,17 +34,17 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Serie.Marca.NomMarca)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Serie.NomSerie)
+			</td>
             <td>
                 @Html.DisplayFor(modelItem => item.Matricula)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serie.NomSerie)
-            </td>
-            <td>
-				@Html.DisplayFor(modelItem => item.Serie.Marca.NomMarca)
             </td>
             <td>
             @foreach (var vehiculoExtra in item.VehiculoExtras)
