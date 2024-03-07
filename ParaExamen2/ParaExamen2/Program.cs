@@ -1,7 +1,23 @@
+using ParaExamen2.Models;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//----------------------------------------------
+
+IConfiguration configuracion = new ConfigurationBuilder()
+	.AddJsonFile("appsettings.json")
+	.AddEnvironmentVariables()
+	.Build();
+
+builder.Services.AddDbContext<Contexto>(options => options.UseSqlServer(configuracion.GetConnectionString("Contexto")));
+
+
+//----------------------------------------------
 
 var app = builder.Build();
 
