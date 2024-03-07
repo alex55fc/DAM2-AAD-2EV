@@ -10,7 +10,7 @@ namespace ParaExamen2.Models
 		}
 		// esto es para que se cree la tabla en la base de datos
 		public DbSet<CursoModelo> Cursos { get; set; }
-
+		public DbSet<AlumnoModelo> Alumnos { get; set; }
 	
 	}
 }
