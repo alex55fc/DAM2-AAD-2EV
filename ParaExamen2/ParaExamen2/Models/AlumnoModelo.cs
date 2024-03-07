@@ -8,7 +8,8 @@
 
 		//esto es de curso modelo
 		public CursoModelo CursoAlumno { get; set; }
-		public int CursoIdAlumno { get; set; }
+		public int CursoAlumnoId { get; set; }
 
     }
 }
+	

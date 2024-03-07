@@ -7,7 +7,7 @@ namespace ParaExamen2.Controllers
 {
 	public class CursoController : Controller
 	{
-		//-----------------------------------------------------
+		//-----------------------------------------------------		
 		//esto es para que se cree la tabla en la base de datos
 		public Contexto Contexto { get; }
 		public CursoController(Contexto contexto)

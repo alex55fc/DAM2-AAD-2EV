@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\alexa\Desktop\DAM2-AAD-2EV\ParaExamen2\ParaExamen2
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/alexa/Desktop/DAM2-AAD-2EV/ParaExamen2/ParaExamen2/Views/Alumno/CreateAlumno.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWx1bW5vXENyZWF0ZUFsdW1uby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alexa/Desktop/DAM2-AAD-2EV/ParaExamen2/ParaExamen2/Views/Alumno/IndexAlumno.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWx1bW5vXEluZGV4QWx1bW5vLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alexa/Desktop/DAM2-AAD-2EV/ParaExamen2/ParaExamen2/Views/Curso/CreateCurso.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29cQ3JlYXRlQ3Vyc28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
