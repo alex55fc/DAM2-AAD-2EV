@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ExamenAlexanderFuela1.Models.ProductoModelo>
+
+@{
+    ViewData["Title"] = "ProductoCompraVenta";
+}
+
+<h1>ProductoCompraVenta</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@Html.DropDownList("LosProductos", "Selecciona un producto")
+

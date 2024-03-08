@@ -12,6 +12,7 @@ namespace ExamenAlexanderFuela1.Models
         public DbSet<ProveedorModelo> Proveedor { get; set; }
         public DbSet<ProductoModelo> Producto { get; set; }
         public DbSet<ComprasModelo> Compras { get; set; }
+        public DbSet<VentasModelo> Ventas { get; set; }
         //-------------------------------------------------------------
  
         protected override void OnModelCreating(ModelBuilder modelBuilder)

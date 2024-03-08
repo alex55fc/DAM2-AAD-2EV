@@ -1,6 +1,7 @@
 ﻿using ExamenAlexanderFuela1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExamenAlexanderFuela1.Controllers
@@ -30,6 +31,13 @@ namespace ExamenAlexanderFuela1.Controllers
         {
             //esto es para llamar a un procedimiento almacenado
             return View(Contexto.vistaTotal.FromSql($"EXECUTE MostrarProductosConComprasYPrecioPromedio2"));
+        }
+        //-----------------------------------------------------
+
+        public ActionResult ProductoCompraVenta()
+        {
+            ViewBag.LosProductos = new SelectList(Contexto.Producto, "Id", "Nombre");
+            return View();
         }
         //-----------------------------------------------------
         // GET: ProductoController
