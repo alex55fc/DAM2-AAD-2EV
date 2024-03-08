@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using static ExamenAlexanderFuela1.Controllers.ProductoController;
 
 namespace ExamenAlexanderFuela1.Models
 {
@@ -7,5 +8,17 @@ namespace ExamenAlexanderFuela1.Models
         public Contexto (DbContextOptions<Contexto> options) : base(options)
         {
         }
+        public DbSet<ClienteModelo> Cliente { get; set; }
+        public DbSet<ProveedorModelo> Proveedor { get; set; }
+        public DbSet<ProductoModelo> Producto { get; set; }
+        public DbSet<ComprasModelo> Compras { get; set; }
+        //-------------------------------------------------------------
+ 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductoTotal>().HasNoKey();
+        }
+        public DbSet<ProductoTotal> vistaTotal { get; set; }
+
     }
 }
