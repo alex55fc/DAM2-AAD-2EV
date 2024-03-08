@@ -19,7 +19,7 @@ namespace ParaExamen2.Controllers
 		// GET: AlumnoController
 		public ActionResult IndexAlumno()
 		{
-			return View(Contexto.Alumnos.Include(x => x.CursoAlumno).ToList());
+			return View(Contexto.Alumnos.Include(x => x.CursoAlumno).Include(x => x.ListaAlumnoAsignatura).ThenInclude(x => x.Asignatura));
 		}
 
 		// GET: AlumnoController/Details/5
@@ -33,6 +33,8 @@ namespace ParaExamen2.Controllers
 		{
 			//esto es para tener guardado el id de todos los cursos en un viewbag
 			ViewBag.CursosAlmacenados = new SelectList(Contexto.Cursos, "Id", "NomCurso");
+			//para ejercicio M.M
+			ViewBag.AsignaturasSeleccionadas = new MultiSelectList(Contexto.Asignaturas, "Id", "NomAsignatura");
 			return View();
 		}
 
@@ -45,6 +47,17 @@ namespace ParaExamen2.Controllers
 			Contexto.Database.EnsureCreated();
 			Contexto.SaveChanges();
 
+			//ejercicio M.M
+			foreach (var asignaturaId in alumnox.AsignaturasSeleccionadas)
+			{
+				var obj = new AlumnoAsignaturaModelo()
+				{
+                    AsignaturaId = asignaturaId,
+					AlumnoId = alumnox.Id
+				};
+				Contexto.AlumnoAsignaturas.Add(obj);
+            }	
+			Contexto.SaveChanges();
 			try
 			{
 				return RedirectToAction(nameof(IndexAlumno));

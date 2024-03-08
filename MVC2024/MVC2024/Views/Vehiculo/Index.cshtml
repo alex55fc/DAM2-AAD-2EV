@@ -46,14 +46,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Color)
             </td>
-            <td>
             @foreach (var vehiculoExtra in item.VehiculoExtras)
             {
                     @Html.DisplayFor(modelItem => vehiculoExtra.Extra.NomExtra)
                 <br />
             }
-            </td>>
-            <td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
