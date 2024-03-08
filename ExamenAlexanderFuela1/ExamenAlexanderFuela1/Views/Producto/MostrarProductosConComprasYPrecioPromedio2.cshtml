@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ExamenAlexanderFuela1.Controllers.ProductoController.ProductoTotal>
 
 @{
-    ViewData["Title"] = "MostrarProductosConCompras2";
+    ViewData["Title"] = "MostrarProductosConComprasYPrecioPromedio2";
 }
 
-<h1>MostrarProductosConCompras2</h1>
+<h1>MostrarProductosConComprasYPrecioPromedio</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -21,23 +21,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.VecesComprado)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioCompraPromedio)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
                     @Html.DisplayFor(modelItem => item.ProductoId)
-            </td>
-            <td>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.NombreProducto)
-            </td>
-            <td>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.VecesComprado)
-            </td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioCompraPromedio)
+                </td>
 
-        </tr>
-}
+
+            </tr>
+        }
     </tbody>
 </table>

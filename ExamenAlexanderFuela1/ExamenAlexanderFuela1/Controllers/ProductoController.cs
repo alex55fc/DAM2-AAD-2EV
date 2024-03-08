@@ -14,6 +14,8 @@ namespace ExamenAlexanderFuela1.Controllers
             public int ProductoId { get; set; }
             public string NombreProducto { get; set; }
             public int VecesComprado { get; set; }
+            public int PrecioCompraPromedio { get; set; }
+
         }
         //-----------------------------------------------------
         //-----------------------------------------------------
@@ -24,10 +26,10 @@ namespace ExamenAlexanderFuela1.Controllers
         }
 
         //-----------------------------------------------------
-        public ActionResult MostrarProductosConCompras2()
+        public ActionResult MostrarProductosConComprasYPrecioPromedio2()
         {
             //esto es para llamar a un procedimiento almacenado
-            return View(Contexto.vistaTotal.FromSql($"EXECUTE MostrarProductosConCompras2"));
+            return View(Contexto.vistaTotal.FromSql($"EXECUTE MostrarProductosConComprasYPrecioPromedio2"));
         }
         //-----------------------------------------------------
         // GET: ProductoController
